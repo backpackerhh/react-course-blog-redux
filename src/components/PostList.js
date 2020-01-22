@@ -11,4 +11,6 @@ const PostList = props => {
   return <div>PostList</div>;
 };
 
-export default connect(null, { fetchPosts })(PostList);
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, { fetchPosts })(PostList);
