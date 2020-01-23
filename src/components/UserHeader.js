@@ -1,13 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
-import { fetchUser } from "../actions";
-
 const UserHeader = props => {
-  useEffect(() => {
-    props.fetchUser(props.userId);
-  }, []);
-
   if (!props.user) {
     return null;
   }
@@ -21,4 +15,4 @@ const mapStateToProps = (state, ownProps) => {
   return { user };
 };
 
-export default connect(mapStateToProps, { fetchUser })(UserHeader);
+export default connect(mapStateToProps)(UserHeader);

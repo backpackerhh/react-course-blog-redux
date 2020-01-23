@@ -11,3 +11,11 @@ export const fetchUser = userId => async dispatch => {
 
   dispatch({ type: "FETCH_USER", payload: response.data });
 };
+
+export const fetchPostsAndUsers = () => async (dispatch, getState) => {
+  await dispatch(fetchPosts());
+
+  const uniqueUserIds = [...new Set(getState().posts.map(post => post.userId))];
+
+  uniqueUserIds.forEach(userId => dispatch(fetchUser(userId)));
+};
